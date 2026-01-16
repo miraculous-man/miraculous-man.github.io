@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+        }
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+        }
+        .project-header {
+            padding: 100px 0 50px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .nav-back {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        .nav-back:hover {
+            color: #0d6efd;
+            transform: translateX(-5px);
+        }
+        .detail-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: -50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .tech-badge {
+            background: rgba(13, 110, 253, 0.1);
+            color: #0d6efd;
+            border: 1px solid rgba(13, 110, 253, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="nav-back">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+
+    <header class="project-header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold" id="projectTitle">Project Title</h1>
+            <p class="lead" id="projectSubtitle">Brief project description goes here</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="detail-card" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3 class="mb-4">Overview</h3>
+                            <p id="projectFullDescription">
+                                Detailed information about the project will be displayed here. This includes the problem solved, the process taken, and the final outcome.
+                            </p>
+                            
+                            <h4 class="mt-5 mb-3">Key Features</h4>
+                            <ul id="projectFeatures">
+                                <li>Feature 1: Description of the functionality</li>
+                                <li>Feature 2: Description of the functionality</li>
+                                <li>Feature 3: Description of the functionality</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-4 rounded-3 border" style="background: rgba(0,0,0,0.02)">
+                                <h5 class="mb-3">Technologies Used</h5>
+                                <div class="d-flex flex-wrap gap-2" id="projectTech">
+                                    <span class="tech-badge">HTML5</span>
+                                    <span class="tech-badge">CSS3</span>
+                                    <span class="tech-badge">Bootstrap</span>
+                                </div>
+                                
+                                <hr class="my-4">
+                                
+                                <h5 class="mb-3">Project Link</h5>
+                                <a href="#" class="btn btn-primary w-100 mb-2">
+                                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                                </a>
+                                <a href="#" class="btn btn-outline-dark w-100">
+                                    <i class="fab fa-github me-2"></i>Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        // Theme Persistence
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Project Data Handling (Simplified for static use)
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id');
+        
+        const projects = {
+            'ecommerce': {
+                title: 'E-commerce Dashboard',
+                subtitle: 'Complete admin control center',
+                desc: 'A robust administration interface designed for managing online retail operations. It provides real-time insights into sales, inventory, and customer behavior.',
+                features: ['Sales analytics charts', 'Inventory management system', 'Customer order tracking', 'Mobile-responsive design'],
+                tech: ['Bootstrap', 'Chart.js', 'JavaScript']
+            },
+            'portfolio': {
+                title: 'Portfolio Site',
+                subtitle: 'Personal brand showcase',
+                desc: 'A modern, high-performance portfolio website built for creative professionals to showcase their work and skills with elegant animations.',
+                features: ['GSAP animations', 'AOS scroll effects', 'Dark mode support', 'Dynamic contact form'],
+                tech: ['HTML5', 'CSS3', 'GSAP', 'Bootstrap']
+            },
+            'analytics': {
+                title: 'Analytics App',
+                subtitle: 'Data visualization platform',
+                desc: 'A powerful tool for visualizing complex datasets through interactive charts and real-time monitoring of key performance indicators.',
+                features: ['Interactive dashboards', 'Real-time data feeds', 'Exportable reports', 'Custom alert settings'],
+                tech: ['Recharts', 'React (Design Only)', 'D3.js']
+            }
+        };
+
+        const project = projects[projectId] || projects['ecommerce'];
+        
+        document.getElementById('projectTitle').innerText = project.title;
+        document.getElementById('projectSubtitle').innerText = project.subtitle;
+        document.getElementById('projectFullDescription').innerText = project.desc;
+        
+        const featuresList = document.getElementById('projectFeatures');
+        featuresList.innerHTML = project.features.map(f => `<li>${f}</li>`).join('');
+        
+        const techContainer = document.getElementById('projectTech');
+        techContainer.innerHTML = project.tech.map(t => `<span class="tech-badge">${t}</span>`).join('');
+    </script>
+</body>
+</html>
